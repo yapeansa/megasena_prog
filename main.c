@@ -35,7 +35,7 @@ int main(void)
     printf("Por favor, digite o número de prognósticos desejado: ");
     scanf("%d", &N);
 
-    for (i = 1; i <= 100; i++)
+    for (i = 1; i <= N; i++)
         grava(Random(1, 60), Random(1, 60), Random(1, 60), Random(1, 60), Random(1, 60), Random(1, 60));
 
     bd = fopen("arquivo.txt", "r");
