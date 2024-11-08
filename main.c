@@ -4,17 +4,19 @@
 
 FILE *bd;
 
-void leitura()
+void leitura(int n)
 {
-    int x_1, x_2, x_3, x_4, x_5, x_6;
-    fscanf(bd, "%d %d %d %d %d %d", &x_1, &x_2, &x_3, &x_4, &x_5, &x_6);
-    printf("Prognóstico: %d %d %d %d %d %d\n", x_1, x_2, x_3, x_4, x_5, x_6);
+    for (int i = 1; i <= n; i++) {
+        int x_1, x_2, x_3, x_4, x_5, x_6;
+        fscanf(bd, "%d %d %d %d %d %d", &x_1, &x_2, &x_3, &x_4, &x_5, &x_6);
+        printf("Prognóstico: %d %d %d %d %d %d\n", x_1, x_2, x_3, x_4, x_5, x_6);
+    }
 }
 
 void grava(int x_1, int x_2, int x_3, int x_4, int x_5, int x_6)
 {
     bd = fopen("arquivo.txt", "a");
-    fprintf(bd, "%d %d %d %d %d %d ", x_1, x_2, x_3, x_4, x_5, x_6);
+    fprintf(bd, "%d %d %d %d %d %d\n", x_1, x_2, x_3, x_4, x_5, x_6);
     fclose(bd);
 }
 
@@ -40,8 +42,7 @@ int main(void)
 
     bd = fopen("arquivo.txt", "r");
 
-    for (i = 1; i <= N; i++)
-        leitura();
+    leitura(N);
 
     fclose(bd);
     return 0;
