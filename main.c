@@ -4,6 +4,15 @@
 
 FILE *bd;
 
+int Random(int low, int high)
+{
+    int k;
+    double d;
+    d = (double)rand() / ((double)RAND_MAX + 1);
+    k = d * (high - low + 1);
+    return low + k;
+}
+
 void leitura(int n)
 {
     bd = fopen("arquivo.txt", "r");
@@ -24,13 +33,10 @@ void grava(int x_1, int x_2, int x_3, int x_4, int x_5, int x_6)
     fclose(bd);
 }
 
-int Random(int low, int high)
+void gravarProg(int n)
 {
-    int k;
-    double d;
-    d = (double)rand() / ((double)RAND_MAX + 1);
-    k = d * (high - low + 1);
-    return low + k;
+    for (int i = 1; i <= n; i++)
+        grava(Random(1, 60), Random(1, 60), Random(1, 60), Random(1, 60), Random(1, 60), Random(1, 60));
 }
 
 int main(void)
@@ -43,8 +49,7 @@ int main(void)
     printf("Por favor, digite o número de prognósticos desejado: ");
     scanf("%d", &N);
 
-    for (i = 1; i <= N; i++)
-        grava(Random(1, 60), Random(1, 60), Random(1, 60), Random(1, 60), Random(1, 60), Random(1, 60));
+    gravarProg(N);
 
     leitura(N);
 
